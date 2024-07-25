@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+env:
+  APIKEY: ${{ secrets.APIKEY}}
+
 jobs:
   golang-test:
     name: test
@@ -18,11 +21,11 @@ jobs:
 
       - name: testing
         run: |
-          go test ./... -coverprofile=coverage.out
+          APIKEY=${{ env.APIKEY }} go test ./... -coverprofile=coverage.out
 
       - name: create report
         uses: k1LoW/octocov-action@v0
-  
+
   golang-cilint:
     name: lint
     runs-on: ubuntu-latest
@@ -33,7 +36,7 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.22
-      
+
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v2
         with:
