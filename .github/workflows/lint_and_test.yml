@@ -18,7 +18,6 @@ jobs:
 
       - name: testing
         run: |
-          cd backend
           go test ./... -coverprofile=coverage.out
 
       - name: create report
