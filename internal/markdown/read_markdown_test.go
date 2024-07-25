@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestXxx(t *testing.T) {
+func TestReadMarkdown(t *testing.T) {
 	ctx := context.Background()
 	path_template := "../../testdata/test_%d.md"
 	cases := []struct {
