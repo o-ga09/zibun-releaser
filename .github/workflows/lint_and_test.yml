@@ -6,6 +6,7 @@ on:
 
 env:
   APIKEY: ${{ secrets.APIKEY}}
+  ENV: "CI"
 
 jobs:
   golang-test:
