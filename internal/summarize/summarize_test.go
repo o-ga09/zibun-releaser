@@ -21,13 +21,15 @@ func TestSummarizeDocument(t *testing.T) {
 	}
 
 	for _, tt := range cases {
-		result, err := SummarizeDocument(ctx, document)
-		if (err != nil) != tt.iserr {
-			t.Errorf("got: %v, but expected: %v", err, tt.err)
-		}
-		t.Log(result)
-		if !strings.Contains(result, tt.expected) {
-			t.Errorf("got: %v, but expected: %v is contained", result, tt.expected)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := SummarizeDocument(ctx, document)
+			if (err != nil) != tt.iserr {
+				t.Errorf("got: %v, but expected: %v", err, tt.err)
+			}
+			t.Log(result)
+			if !strings.Contains(result, tt.expected) {
+				t.Errorf("got: %v, but expected: %v is contained", result, tt.expected)
+			}
+		})
 	}
 }

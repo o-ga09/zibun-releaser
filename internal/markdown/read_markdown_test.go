@@ -20,13 +20,15 @@ func TestReadMarkdown(t *testing.T) {
 	}
 
 	for i, tt := range cases {
-		path := fmt.Sprintf(path_template, i+1)
-		result, err := ReadMarkdown(ctx, path)
-		if (err != nil) != tt.iserr {
-			t.Errorf("got: %v err is not nil but expected err is nil", err)
-		}
-		if result != tt.expected {
-			t.Errorf("got %v, but expected %v", result, tt.expected)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			path := fmt.Sprintf(path_template, i+1)
+			result, err := ReadMarkdown(ctx, path)
+			if (err != nil) != tt.iserr {
+				t.Errorf("got: %v err is not nil but expected err is nil", err)
+			}
+			if result != tt.expected {
+				t.Errorf("got %v, but expected %v", result, tt.expected)
+			}
+		})
 	}
 }
