@@ -1,12 +1,30 @@
 name: "zibun-releaser"
 description: "zibun-releaser"
-# inputs:
-#   test-input:
-#     description: "test input data"
-#     required: true
-#     default: ""
+inputs:
+  release-version:
+    description: "new release version"
+    required: true
+    default: "v0.0.0"
+  filepath:
+    description: "markdown file path"
+    required: true
+    default: ""
+  apikey:
+    description: "gemini api key"
+    required: true
+    default: ""
+
 runs:
   using: "composite"
   steps:
     - run: go run ${{ github.action_path }}/main.go
+      shell: bash
+      env:
+        FILEPATH: ${{ inputs.filepath }}
+        APIKEY: ${{ inputs.apikey}}
+
+    - run: git tag -a -m "$(cat /tmp/releasenote.md)" ${{ inputs.release-version }}
+      shell: bash
+
+    - run: git push --follow-tags
       shell: bash
