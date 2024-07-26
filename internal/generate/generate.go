@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"os"
 	"text/template"
 )
 
@@ -95,4 +96,23 @@ Release Note: {{ .Version }}
 
 	// バッファの内容を文字列として返す
 	return buf.String(), nil
+}
+
+func CreateReleaseNoteFile(ctx context.Context, path string, data string) error {
+	if os.Getenv("ENV") == "CI" {
+		path = fmt.Sprintf("/tmp/%s", path)
+	} else {
+		path = fmt.Sprintf("../../testdata/%s", path)
+	}
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(data)
+	if err != nil {
+		return err
+	}
+	return nil
 }

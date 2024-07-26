@@ -2,6 +2,7 @@ package generate
 
 import (
 	"context"
+	"os"
 	"strings"
 	"testing"
 )
@@ -114,6 +115,33 @@ Release Note: v1.0.0
 			resultTrimmed := strings.TrimSpace(result)
 			if resultTrimmed != expectedTrimmed {
 				t.Errorf("got %v, but expected %v", result, tt.expected)
+			}
+		})
+	}
+}
+
+func TestCreateReleaseNoteFile(t *testing.T) {
+	t.Setenv("ENV", os.Getenv("ENV"))
+	ctx := context.Background()
+	cases := []struct {
+		name     string
+		filename string
+		data     string
+		iserr    bool
+	}{
+		{
+			name:     "test case 1",
+			filename: "test.md",
+			data:     "## Title \n## Overview\n## Summary\ntest data",
+			iserr:    false,
+		},
+	}
+
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			err := CreateReleaseNoteFile(ctx, tt.filename, tt.data)
+			if (err != nil) != tt.iserr {
+				t.Errorf("got: %v err is not nil but expected err is nil", err)
 			}
 		})
 	}
