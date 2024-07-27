@@ -13,7 +13,7 @@ inputs:
     description: "gemini api key"
     required: true
     default: ""
-  github-pat:
+  github-token:
     description: "github paesonal access token"
     required: true
     default: ""
@@ -46,4 +46,4 @@ runs:
           --verify-tag ${{ inputs.release-version }}
       shell: bash
       env:
-        GH_TOKEN: ${{ inputs.github-pat }}
+        GH_TOKEN: ${{ inputs.github-token}}
