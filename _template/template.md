@@ -2,6 +2,7 @@
 Release Tile: "backlog for monthly" # リリースタイトルを記載する
 Release Version: "v1.0.0" # リリースバージョンを記載する
 publish: true # true:リリースする false: 下書き
+Release Date: "2024-07-31" # リリースする日付
 ---
 
 <!-- Release Versionが入る -->
