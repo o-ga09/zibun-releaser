@@ -46,4 +46,4 @@ runs:
           --verify-tag ${{ inputs.release-version }}
       shell: bash
       env:
-        GITHUB_TOKEN: ${{ inputs.github-pat }}
+        GH_TOKEN: ${{ inputs.github-pat }}
