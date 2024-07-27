@@ -21,8 +21,11 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ls -l ${{ github.action_path }}
-      shell: bash
+    run: |
+      git config --global user.name 'github-actions[bot]'
+      git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+    shell: bash
+
     - run: ${{ github.action_path }}/build/main
       shell: bash
       env:
