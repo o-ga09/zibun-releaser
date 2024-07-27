@@ -21,7 +21,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: go run ${{ github.action_path }}/main.go
+    - run: ./${{ github.action_path }}/build/main
       shell: bash
       env:
         ENV: "CI"
