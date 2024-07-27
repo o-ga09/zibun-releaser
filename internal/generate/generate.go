@@ -11,6 +11,7 @@ import (
 type ReleaseNote struct {
 	Version        string
 	Title          string
+	Date           string
 	Overview       string
 	PR             []string
 	Change         []string

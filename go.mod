@@ -8,8 +8,9 @@ require (
 )
 
 require (
-	github.com/russross/blackfriday v1.6.0
 	github.com/stretchr/testify v1.9.0
+	github.com/yuin/goldmark v1.7.4
+	github.com/yuin/goldmark-meta v1.1.0
 )
 
 require (
@@ -54,5 +55,6 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240509183442-62759503f434 // indirect
 	google.golang.org/grpc v1.64.0 // indirect
 	google.golang.org/protobuf v1.34.1 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

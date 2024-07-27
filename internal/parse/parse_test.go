@@ -17,7 +17,21 @@ func TestParsemarkdown(t *testing.T) {
 		expected generate.ReleaseNote
 		iserr    bool
 	}{
-		{name: "1行のファイルの場合", expected: generate.ReleaseNote{}, iserr: false},
+		{name: "1行のファイルの場合", expected: generate.ReleaseNote{
+			Version:        "v1.0.0",
+			Title:          "backlog for monthly",
+			Date:           "2024-07-31",
+			Overview:       "",
+			PR:             nil,
+			Change:         []string{"コーディングした", "サービス作った"},
+			Fixture:        []string{"朝活が習慣化できた"},
+			BreakingChange: []string{"転職した"},
+			Issue:          []string{"副業やりたい"},
+			Keep:           []string{"勉強会いっぱい行った", "サービス作った", "記事書いた"},
+			Problem:        []string{"副業探しに苦戦中", "投資に失敗", "SNS苦戦中"},
+			Try:            []string{"資格試験に申し込んだ", "サービス作る", "副業探す"},
+			Other:          []string{"スター欲しいです"},
+		}, iserr: false},
 	}
 
 	for i, tt := range cases {
