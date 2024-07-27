@@ -33,11 +33,12 @@ runs:
 
     - run: git push --follow-tags
       shell: bash
-    
-    - use: GitHubRelease@0 
-      with:
-        gitHubConnection: ${{ inputs.github-pat}}
-        tag: ${{ inputs.release-version }}
-        title: "じぶんリリースノート $(date "+%Y/%m")"
-        releaseNotesSource: file
-        releaseNotesFile: "/tmp/releasenote.md"
+
+    - run: |
+        gh release create ${{ inputs.release-version }} \
+          --title "じぶんリリースノート $(date "+%Y/%m")" \
+          --notes-file /tmp/releasenote.md \
+          --tag ${{ inputs.release-version }}
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-pat }}
