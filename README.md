@@ -19,6 +19,10 @@
 - KPT: Keep(継続すること), Problem(課題), Try(挑戦すること)をまとめる振り返り手法
 - その他: 感想、感情、気づきなどを自由に記録
 
+## 参考イメージ
+
+![参考イメージ](https://github.com/user-attachments/assets/c67b5df8-0790-40fc-9327-267450c7facd)
+
 ## 使い方
 
 じぶんリリースノートのフォーマットは、[example.md](./_example/example.md)に従ってください。
