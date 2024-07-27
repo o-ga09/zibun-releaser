@@ -13,6 +13,10 @@ inputs:
     description: "gemini api key"
     required: true
     default: ""
+  github-pat:
+    description: "github paesonal access token"
+    required: true
+    default: ""
 
 runs:
   using: "composite"
@@ -20,6 +24,7 @@ runs:
     - run: go run ${{ github.action_path }}/main.go
       shell: bash
       env:
+        ENV: "CI"
         FILEPATH: ${{ inputs.filepath }}
         APIKEY: ${{ inputs.apikey}}
 
@@ -28,3 +33,11 @@ runs:
 
     - run: git push --follow-tags
       shell: bash
+    
+    - use: GitHubRelease@0 
+      with:
+        gitHubConnection: ${{ inputs.github-pat}}
+        tag: ${{ inputs.release-version }}
+        title: "じぶんリリースノート $(date "+%Y/%m")"
+        releaseNotesSource: file
+        releaseNotesFile: "/tmp/releasenote.md"
