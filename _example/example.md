@@ -1,7 +1,8 @@
 ---
-Release Tile: "backlog for monthly" # リリースタイトルを記載する
+Release Title: "backlog for monthly" # リリースタイトルを記載する
 Release Version: "v1.0.0" # リリースバージョンを記載する
-publish: true # true:リリースする false: 下書き
+Publish: true # true:リリースする false: 下書き
+Release Date: "2024-07-31" # リリースする日付
 ---
 ## 変更内容
 
@@ -15,6 +16,8 @@ https://github.com/o-ga09/zibun-releaser
 ## 破壊的変更
 
 - 転職した
+
+サンプルパラグラフサンプルパラグラフサンプルパラグラフサンプルパラグラフサンプルパラグラフサンプルパラグラフサンプルパラグラフサンプルパラグラフ
 
 ## 修正内容
 
