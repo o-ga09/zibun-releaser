@@ -21,7 +21,64 @@
 
 ## 使い方
 
+じぶんリリースノートのフォーマットは、[example.md](./_example/example.md)に従ってください。
+
+- `secrets.PAT`には、リポジトリ環境変数に`personal access token`を設定してください。
+- `secrets.APIKEY`には、Gemini API KEYをリポジトリ環境変数に設定してください。
+(Open AI APIにも対応する予定)
+- `filepath`は、リポジトリルートからの相対パスで指定してください。
+- `release-version`は、セマンティックバージョニングに従ってください。
+
+```
+- name: Use Custom Actions
+uses: o-ga09/zibun-releaser@v0.0.15
+with:
+    release-version: '<リリースしたいバージョン>'
+    github-token: ${{ secrets.PAT }}
+    filepath: "<じぶんリリースノートの元となるmarkdownファイル>"
+    apikey: ${{ secrets.APIKEY }}
+```
+
+## Buils and Run
+
+makefile中の環境変数を設定してください
+
+`<Gemini APIKEY>`は、Gemini APIKEYを設定する。
+`_example/example.md`は、任意のじぶんリリースの元となるファイルが格納された場所を指定する
+
+```
+export APIKEY=<Gemini APIKEY>
+export ENV="CI"
+export FILEPATH="_example/example.md"
+```
+
+### Build
+
+```
+$ make build
+```
+
+### Run
+
+```
+$ make run
+```
+
+実行後、リリースノートが、/tmp/releasenote.mdに作成されます。
+
 ## Contribute
+
+Issue、Pull Request受け付けています。
+バグ修正、Feature Requestをお願いいたします。
+
+## Roadmap
+
+- [ ] SNSに自動で投稿する
+- [ ] note自動で投稿する
+- [ ] windows環境での実行に対応する
 
 ## Licence
 
+MIT Licese .
+
+2024 @o-ga09
